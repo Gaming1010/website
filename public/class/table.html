@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" ng-app="foo">
+
+<head>
+    <ng-include src="'/header'"></ng-include>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <!--
+                <html lang="en" ng-app="foo">
+            -->
+    <script type="text/javascript">
+        var app = angular.module("foo", []);
+    </script>
+    <title>Tables</title>
+</head>
+
+<body>
+    <h1 align=center border=1px bgcolor=pink>Tables</h1>
+    <table align=center border=1px bgcolor=pink cellpadding=10px>
+
+
+        <tr>
+            <th colspan=2>
+                Names
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                Grade
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                Stuti
+            </td>
+            <td>
+                Mishra
+            </td>
+            <td>
+                13
+            </td>
+            <td rowspan=2>
+                8
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                ria
+            </td>
+            <td>
+                Mishra
+            </td>
+            <td rowspan=2>
+                14
+            </td>
+        </tr>
+        <tr>
+            <td>
+                tia
+            </td>
+            <td>
+                Mishra
+            </td>
+            <td>
+                9
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

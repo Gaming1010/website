@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" ng-app="foo">
+
+<head>
+    <ng-include src="'/header'"></ng-include>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <!--
+            <html lang="en" ng-app="foo">
+        -->
+    <script type="text/javascript">
+        var app = angular.module("foo", []);
+    </script>
+    <title>Marquee</title>
+</head>
+
+<body>
+    <marquee behaviour="scroll" direction="left" height="70px" bgcolor="blue" hspace="50px" scrollamount="10px">
+        <h1>Happy Republic day</h1>
+    </marquee>
+    <marquee behavior="scroll" bgcolor="#e5820d" height="90px">Orange</marquee>
+    <marquee behavior="scroll" direction=right bgcolor="white" height="90px" hspace="200px"><img src=https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Ashoka_Chakra.svg/1200px-Ashoka_Chakra.svg.png width=100px height=1 00px White></img>
+    </marquee>
+    <marquee behavior="scroll" bgcolor="green" height="90px">Green</marquee>
+</body>
+
+</html>

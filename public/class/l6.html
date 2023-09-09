@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="foo">
+
+<head>
+    <ng-include src="'../header'"></ng-include>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <!--
+        <html lang="en" ng-app="foo">
+    -->
+    <script type="text/javascript">
+        var app = angular.module("foo", []);
+    </script>
+    <title>CSS</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h1> Inline CSS </h1>
+    <p style="font-size: 30px;color:red;">This paragrapgh is styled using inline CSS</p>
+    <p>We can style font, font-color, background-color, position of element like right left or center and many more styles</p>
+    <p>Top 4 honour conferred in India are:</p>
+    <ol style="list-style-type:upper-roman;">
+        <li value="50" style="color:red;">Bharat Ratna </li>
+        <li>Padma Vibhushan</li>
+        <li>Padma Bhusan</li>
+        <li>Padma Shri</li>
+    </ol>
+    <h1>Shoping list</h1>
+
+    <ul style="list-style-type:square;">
+        <li>coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+        <li>Water</li>
+        <li>Juice</li>
+    </ul>
+</body>
+
+</html>

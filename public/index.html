@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="foo">
+
+<head>
+    <title>Home</title>
+</head>
+
+<body>
+    <ng-include src="'/header'"></ng-include>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <!--
+        <html lang="en" ng-app="foo">
+    -->
+    <script type="text/javascript">
+        var app = angular.module("foo", []);
+    </script>
+    <link rel="stylesheet" href="/styles.scripts/button.css">
+    <br><br><br>
+    <style>body{text-align:center;}.button {font-size: 150%;padding: 32px 64px;margin: 10px 10px;}</style>
+    <button class="rblue button shadow" onclick="location.href='./projects/upload'">Upload Media</button>
+    <button class="rred button shadow" id="w" onclick="location.href='./media'">Watch Media</button>
+    <button class="rgreen button shadow" onclick="location.href='./class/forms'">Coding Class Files</button>
+</body>
+
+</html>
