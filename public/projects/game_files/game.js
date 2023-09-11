@@ -1,11 +1,11 @@
 let canvas = document.getElementById("game-canvas");
 const ctx = canvas.getContext('2d');
-let img = new Image();
-img.src = "/projects/game_files/sky-bg.png";
+let game_bg = new Image();
+game_bg.src = "/projects/game_files/sky-bg.png";
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
-function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
+function drawImageProp(ctx, game_bg, x, y, w, h, offsetX, offsetY) {
 
     if (arguments.length === 2) {
         x = y = 0;
@@ -23,8 +23,8 @@ function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
     if (offsetX > 1) offsetX = 1;
     if (offsetY > 1) offsetY = 1;
 
-    var iw = img.width,
-        ih = img.height,
+    var iw = game_bg.width,
+        ih = game_bg.height,
         r = Math.min(w / iw, h / ih),
         nw = iw * r,   // new prop. width
         nh = ih * r,   // new prop. height
@@ -50,14 +50,38 @@ function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
     if (ch > ih) ch = ih;
 
     // fill image in dest. rectangle
-    ctx.drawImage(img, cx, cy, cw, ch,  x, y, w, h);
+    ctx.drawImage(game_bg, cx, cy, cw, ch,  x, y, w, h);
 }
 
+function drawImage() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    drawImageProp(ctx, game_bg, 0, 0, canvas.width, canvas.height,(offsetX/10),0);
+    console.log(offsetX);
+}
 
-window.onload = function() {
-    function loop() {
-        /*ctx.drawImage(img,0,0,canvas.wid,canvas.height); */
-        drawImageProp(ctx, img, 0, 0, canvas.width, canvas.height,offsetX);
+var offsetX = 0;
+document.addEventListener('keypress', (event) => {
+    let name = event.key;
+    if (name == "a"){
+        for (var i=0; i<10; i++) {
+            console.log(i)
+            setTimeout(() =>{
+                offsetX = offsetX - 0.01
+                drawImage();
+            });
+        }
+        console.log(name);
+    };
+    if (name == "d"){
+        for (let i=0; i<10; i++) {
+            setTimeout(() =>{
+                offsetX = offsetX + 0.1
+                drawImage();
+            }, 100);
+        }
+        console.log(name);
     }
-    loop();
+}, false);
+window.onload = function(){
+    drawImage();
 }
