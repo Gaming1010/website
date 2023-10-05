@@ -9,6 +9,7 @@ const path = require('path')
 const app = express();
 const clas = './public/class/';
 const media = './public/media/';
+const secret = './public/secret/';
 const compression = require('compression');
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
 
@@ -238,6 +239,52 @@ app.post('/upload', function(req, res) {
     res.redirect('/media');
   });
 });
+
+
+app.get("/secret/", (req, res) => {
+  res.set("Content-Type", "text/html");
+  res.write('<!DOCTYPE html>\n')
+  res.write('<html lang="en" data-ng-app="foo">\n')
+  res.write('<link rel="stylesheet"href="/styles.scripts/secret.css"/>')
+  res.write('<title>Patch Space</title>')
+  res.write(`<ng-include src="'/header'"></ng-include> <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script> <!-- <html lang="en" ng-app="foo"> --> <script type="text/javascript"> var app = angular.module("foo", []); </script>`)
+  res.write('<h1 class="drop" style="--order: 1; text-align: center;">Secret Videos</h1>')
+  let v = req.query.v;
+  let vid;
+  if (typeof v !== 'undefined') {
+    fs.readdirSync(secret).every(file => {
+      if (v == file) {
+        vid = true;
+        return false;
+      }
+      return true;
+    })
+    if (vid == true) {
+      let ext = path.extname(v);
+      if (ext == ".mp4" || ext == ".mp3" || ext == ".ogg") {
+        res.write("<video class='secret' id='playing-video' onloadstart='this.volume=0.224' autoplay controls preload=auto><source src='./" + v + "#t=3.7" + "'></video>")
+      }
+    }
+  }
+  fs.readdirSync(secret).forEach(file => {
+    var ext = path.extname(file);
+    if (ext == ".mp4" || ext == ".mp3" || ext == ".ogg") {
+      if (v !== file) {
+        res.write("<a href='/secret?v=" + file + "'><video class='secret video' onloadstart='this.volume=0.3' preload=auto style='max-height: 500px;'><source src='./" + file + "#t=10"+"'></video></a>")
+      }
+    }
+  })
+  res.write('<h1 class="drop" style="--order: 1; text-align: center;">Secret Photos</h1>')
+  fs.readdirSync(secret).forEach(file => {
+    let ext = path.extname(file);
+    if (ext == ".jpeg" || ext == ".jpg" || ext == ".png") {
+      res.write("<img class='secret photo' src='" + file + "'>")
+    }
+  })
+  res.end("</div>");
+})
+
+
 //brooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 //complete this btw brooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 app.get("projects", (req, res) => {
