@@ -43,12 +43,13 @@ body{
     font-size: 1.2rem;
 }
 #scroll{
+    border-radius: 20px;
     display: block;
     background-color: #202020;
     position: absolute;
     width: 30vw;
     height: 100vh;
-    top: 0vh;
+    top: 81px;
     right: 0px;
 }
 h1,h2,h3,h4,h5,h6{

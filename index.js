@@ -168,7 +168,7 @@ app.get("/media", (req, res) => {
   res.write('<link rel="stylesheet"href="/styles.scripts/media.css"/>')
   res.write('<title>Patch Space</title>')
   res.write(`<ng-include src="'/header'"></ng-include> <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script> <!-- <html lang="en" ng-app="foo"> --> <script type="text/javascript"> var app = angular.module("foo", []); </script>`)
-  res.write('<h1 class="drop" style="--order: 1; text-align: center;">Videos</h1>')
+  res.write('<h1 class="drop" style="--order: 1; text-align: center;">Videos (Click To Play)</h1>')
   res.write('<div class="media">')
   let thumbnails = './public/thumbnails/'
   fs.readdirSync(media).forEach(file => {
@@ -220,7 +220,7 @@ app.get("/media_player",(req,res) => {
     if (vid == true) {
       let ext = path.extname(v);
       if (ext == ".mp4" || ext == ".mp3" || ext == ".ogg") {
-        res.write(`<div id="main_vid_bg"><video id="main_vid" src='/media/`+v+`' autoplay controls preload=auto onloadstart='this.volume=0.224' poster=""></video><h1 id="main_vid_title">Charm</h1></div>`)
+        res.write(`<div id="main_vid_bg"><video id="main_vid" src='/media/`+v+`' autoplay controls preload=auto onloadstart='this.volume=0.224' poster=""></video><h1 id="main_vid_title">`+v.substr(0, v.lastIndexOf('.'))+`</h1></div>`)
       }
     }
   }
