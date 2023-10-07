@@ -10,6 +10,9 @@ const app = express();
 const clas = './public/class/';
 const media = './public/media/';
 const compression = require('compression');
+const ffmpeg = require('fluent-ffmpeg');
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+ffmpeg.setFfmpegPath(ffmpegPath);
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
 
 //chat things
@@ -167,28 +170,18 @@ app.get("/media", (req, res) => {
   res.write(`<ng-include src="'/header'"></ng-include> <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script> <!-- <html lang="en" ng-app="foo"> --> <script type="text/javascript"> var app = angular.module("foo", []); </script>`)
   res.write('<h1 class="drop" style="--order: 1; text-align: center;">Videos</h1>')
   res.write('<div class="media">')
-  let v = req.query.v;
-  let vid;
-  if (typeof v !== 'undefined') {
-    fs.readdirSync(media).every(file => {
-      if (v == file) {
-        vid = true;
-        return false;
-      }
-      return true;
-    })
-    if (vid == true) {
-      let ext = path.extname(v);
-      if (ext == ".mp4" || ext == ".mp3" || ext == ".ogg") {
-        res.write("<video class='media' id='playing-video' onloadstart='this.volume=0.224' autoplay controls preload=auto><source src='./" + v + "'></video>")
-      }
-    }
-  }
+  let thumbnails = './public/thumbnails/'
   fs.readdirSync(media).forEach(file => {
-    var ext = path.extname(file);
-    if (ext == ".mp4" || ext == ".mp3" || ext == ".ogg") {
-      if (v !== file) {
-        res.write("<a href='/media?v=" + file + "'><video class='media video' onloadstart='this.volume=0.3' controls preload=auto style='max-height: 500px;'><source src='./" + file + "'></video></a>")
+    if (!fs.existsSync(thumbnails+file+'.png')) {
+      ffmpeg(media+file).screenshots({
+        timemarks: [2],
+        filename: file+'.png',
+        folder: thumbnails,
+      });
+    } else {
+      var ext = path.extname(file);
+      if (ext == ".mp4" || ext == ".mp3" || ext == ".ogg") {
+        res.write("<a href='/media_player?v=" + file + "'><img class='media video'style='max-height: 500px;'src='/thumbnails/"+file+".png'></img></a>")
       }
     }
   })
@@ -202,6 +195,39 @@ app.get("/media", (req, res) => {
   res.end("</div>");
 })
 
+app.get("/media_player",(req,res) => {
+  let v = req.query.v;
+  if (typeof v == 'undefined'){
+    res.redirect("/media")
+  }else{
+  res.set("Content-Type", "text/html");
+  res.write(`<!DOCTYPE html><html lang="en" data-ng-app="foo"><head>`)
+  res.write(`<meta charset="UTF-8"><title>Video Player</title>`)
+  res.write(`<ng-include src="'/header'"></ng-include> <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script> <!-- <html lang="en" ng-app="foo"> --> <script type="text/javascript"> var app = angular.module("foo", []); </script>`)
+  res.write(`<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">`)
+  res.write(`<link rel="stylesheet" href="/styles.scripts/player.css">`)
+  res.write(`</head><body>`)
+  //MAIN VIDEO PLAYER
+  if (typeof v !== 'undefined') {
+    let vid;
+    fs.readdirSync(media).every(file => {
+      if (v == file) {
+        vid = true;
+        return false;
+      }
+      return true;
+    })
+    if (vid == true) {
+      let ext = path.extname(v);
+      if (ext == ".mp4" || ext == ".mp3" || ext == ".ogg") {
+        res.write(`<div id="main_vid_bg"><video id="main_vid" src='/media/`+v+`' autoplay controls preload=auto onloadstart='this.volume=0.224' poster=""></video><h1 id="main_vid_title">Charm</h1></div>`)
+      }
+    }
+  }
+  //NOT MAIN VIDEO PLAYER
+  res.write(`<div id="scroll"><video class="vid" src=""></video><div class="vid_title"><h2>Title</h2></div>`)
+  res.end(`</body></html>`)
+}})
 
 app.get("/", (req, res) => {
   res.sendFile("/index")
