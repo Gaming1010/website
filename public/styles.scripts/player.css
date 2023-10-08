@@ -1,4 +1,14 @@
+a {
+    text-decoration: none !important;
+}
+.header{
+    background-color: #3838384d !important;
+}
+.header a{
+    color: white !important;
+}
 body{
+    white-space: initial;
     font-family: 'Raleway', sans-serif;
     background-color: #282828;
     overflow-y: auto;
@@ -12,10 +22,11 @@ body{
 #main_vid{
     border-radius: 20px;
     position:relative;
-    width: 65vw;
+    width: 64vw;
     max-height:80vh;
 }
 #main_vid_title{
+    background-color:#212121;
     position: relative;
     height: 7vh;
     width: auto;
@@ -26,31 +37,43 @@ body{
 }   
 .vid{
    position: relative;
-   top:30px;
-   max-width: 50%;
-   left: 0.5vw;
+   max-width: 100%;
+   max-height: 100%;
+   left: 3px;
    height: auto;
    border-radius: 10px;
-
 }
 .vid_title{
     position: relative;
-    display: inline-block;
+    display: block;
     margin: 0;
     padding:0;
-    bottom: 7.5vh;
-    left: 0.7vw;
-    font-size: 1.2rem;
+    top: 0;
+    left: 10px;
+    font-size: 1.5rem;
+    text-align: left;
+}
+.div_of_vid {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    /*idk sumthing ^_^*/
+    border-radius: 10px;
+    position: relative;
+    background-color: #141414;
+    margin: 5px;
 }
 #scroll{
     border-radius: 20px;
     display: block;
     background-color: #202020;
     position: absolute;
-    width: 30vw;
+    width: 34vw;
     height: 100vh;
     top: 81px;
-    right: 0px;
+    right: 1vw;
 }
 h1,h2,h3,h4,h5,h6{
     color: #eeffff;
@@ -65,13 +88,11 @@ h1,h2,h3,h4,h5,h6{
     }
     #main_vid_bg {
         position: relative;
-        left:-1vw;
     }
     #scroll {
         position: relative;
-        left:-1vw;
         display: block;
-        width: 99vw;
+        width: 100vw;
         height: 100%;
     }
 }
