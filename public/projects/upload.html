@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="foo">
+
+<head>
+    <ng-include src="'/header'"></ng-include>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <!--
+            <html lang="en" ng-app="foo">
+        -->
+    <link rel="stylesheet" href="/styles.scripts/button.css">
+    <script type="text/javascript">
+        var app = angular.module("foo", []);
+    </script>
+    <title>website hoster</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+</head>
+
+<body>
+    <style>
+        input[type="file"] {
+            background-color: none;
+        }
+    </style><br><br><br><br>
+
+    <form ref='uploadForm' id='uploadForm' action='/upload' method='post' encType="multipart/form-data">
+        <input type="file" name="sampleFile" class="green button shadow" accept=".png, .jpeg, .jpg, .html, .css, .js,.mp4,.webm,.nigger,.black" />
+        <input type='submit' value='Upload!' class="blue button shadow" />
+    </form>
+</body>
+
+</html>

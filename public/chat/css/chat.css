@@ -1,0 +1,185 @@
+/* Basic Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
+/* Body */
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    background: #1a1a2e; /* Dark background */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Ensure full viewport height */
+    overflow: hidden; /* Prevent unnecessary scroll on the body */
+}
+
+/* Links */
+a {
+    text-decoration: none; /* Remove underline from all links */
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px 15px;
+    background: #ff00ff; /* Example of neon color */
+    color: #fff;
+    border: 0;
+    font-size: 17px;
+}
+
+.chat-header a {
+    text-decoration: none; /* Removes the underline from the link */
+}
+
+/* Chat Header */
+.chat-header {
+    background: #1a1a1a;
+    color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+	overflow: hidden;
+}
+
+.chat-header h1 {
+    font-size: 24px;
+    margin: 0;
+    padding: 12px 25px;
+    background-color: #00b9ff; /* Bright neon color */
+    border-radius: 25px;
+    color: #fff;
+    border: 2px solid #00b9ff;
+}
+
+.chat-header .button {
+    text-decoration: none;
+}
+
+/* Chat Main Area */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden; /* Ensure no overflow on the main container */
+}
+
+/* Ensuring chat area fills space */
+.chat-main {
+    display: flex;
+    height: 100%;
+    overflow: hidden; /* Ensure no scroll here */
+}
+
+.chat-sidebar {
+    background: #2a2a2a; /* Darker color for the sidebar */
+    color: #fff;
+    padding: 20px;
+    border-right: 2px solid #444;
+    height: 100%;
+    overflow-y: auto; /* Allow scrolling inside sidebar if necessary */
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5); /* Subtle inner shadow */
+}
+
+.chat-sidebar h2 {
+    font-size: 22px;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #3a3a3a; /* Slightly lighter background for section headers */
+}
+
+.chat-sidebar h3 {
+    margin-bottom: 15px;
+}
+
+.chat-sidebar ul li {
+    padding: 10px 0;
+}
+
+/* Chat Messages */
+.chat-messages {
+    padding: 10px 5px 0px;
+    height: 100%; /* Ensure chat area grows to fill available space */
+    overflow-y: auto; /* Scroll inside chat area if necessary */
+    background-color: #1a1a2e; /* Dark background for the chat */
+    flex-grow: 1; /* Make chat messages fill available space */
+}
+
+/* Message Style */
+.chat-messages .message {
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #0d0d0d;
+    border-radius: 5px;
+}
+
+.chat-messages .message .meta {
+    font-size: 18px;
+    font-weight: bold;
+    color: #747474;
+    opacity: 0.7;
+    margin-bottom: 7px;
+}
+
+.chat-messages .message .meta span {
+    color: #777;
+}
+
+/* Chat Input Form */
+.chat-form-container {
+    padding: 20px 30px;
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: flex-end; /* Align form to the right */
+    align-items: center;
+	overflow: hidden;
+    margin-top: auto; /* Ensure the input form is at the bottom */
+}
+
+.chat-form-container form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.chat-form-container input[type="text"] {
+    font-size: 16px;
+    padding: 10px;
+    flex: 1;
+    border-radius: 5px;
+    border: 2px solid #555;
+    background-color: #333;
+    color: #e0e0e0;
+    margin-right: 10px;
+}
+
+.chat-form-container button {
+    background-color: #ff00ff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 700px) {
+    .chat-main {
+        display: block;
+    }
+
+    .chat-sidebar {
+        display: none;
+    }
+}

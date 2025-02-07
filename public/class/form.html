@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" ng-app="foo">
+
+<head>
+    <title>Forms</title>
+</head>
+
+<body>
+    <link rel="stylesheet" href="/styles.scripts/button.css">
+    <ng-include src="'/header'"></ng-include>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <!--
+        <html lang="en" ng-app="foo">
+    -->
+    <script type="text/javascript">
+        var app = angular.module("foo", []);
+    </script>
+    <style>
+        .buttonn {
+            background-color: rgb(222, 222, 222);
+        }
+        
+        .buttonn:hover {
+            size: 50px;
+            background-color: cyan;
+            color: rgb(255, 14, 14);
+            border: 5px solid limegreen;
+        }
+    </style>
+    <button class="blue buttonn button shadow" onclick="location.href='/class/forms'">Go to modified version</button><br>
+    <h1>Covid test Eligibility</h1>
+    <form name="Covid test Eligibility">
+        <fieldset style="background-color:cyan;">
+            <legend>Personal Details</legend>
+            <label for="firstname">First name:</label><br>
+            <input type="text" name="firstname" value="Minnal"><br>
+            <label for="firstname">Last name:</label><br>
+            <input type="text" name="lastname" value="Murali"><br>
+            <label for="firstname">Age:</label><br>
+            <input type="text" name="age" value=">14"><br>
+            <lable>Gender</label><br>
+                <input type="radio" name="gender">
+                <label for="male">Male</label><br>
+                <input type="radio" name="gender">
+                <label for="male">Female</label><br>
+                <input type="radio" name="gender">
+                <label for="male">Gay</label><br><br>
+
+                <fieldset style="background-color:lime;">
+                    <legend>Symptoms:,</legend>
+                    <label>Check all your symptoms</label><br>
+
+                    <input type="checkbox" name="symptoms" value="fever">
+                    <label for="fever">Fever</label>
+                    <br>
+
+                    <input type="checkbox" name="symptoms" value="difficultybreathing">
+                    <label for="difficultybreathing">Difficulty breathing</label>
+                    <br>
+
+                    <input type="checkbox" name="symptoms" value="lowoxygenlevel">
+                    <label for="lowoxygenlevel">Low oxygen level</label>
+                    <br>
+
+                    <input type="checkbox" name="symptoms" value="coughing">
+                    <label for="coughing">Coughing</label><br>
+                    <br>
+
+                    <fieldset style="background-color:red;">
+                        <legend>Address Details</legend>
+                        <label>Choose your country<label><br>
+                            
+                    <select id="country" name="country">
+                    <option value="india">India</option>
+                    <option value="china">China</option>
+                    <option value="europe">Europe</option>
+                    <option value="america">America</option>
+                    <option value="uae">UAE</option>
+                    </select><br>
+                    <textarea name="address detail" rows="10" cols="30" placeholder="Address"></textarea>
+                </fieldset><br>
+                <fieldset style="background-color:gray;">
+                    <legend>Preconditions</legend>
+                    <textarea name="preconditions" rows="10" cols="30"placeholder="Pre Conditions"></textarea><br>
+                    <input type="submit" name="Submit">
+                </fieldset>
+            </fieldset>
+        </form>
+        <h2 style="color: rgba(128, 128, 128, 0.592);"><b><i>Credits: ItzMeGamerX</i></b></h1>
+    </body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="foo">
+
+<head>
+    <title>Form</title>
+    <link rel="stylesheet" href="/styles.scripts/button.css">
+</head>
+
+<body>
+    <ng-include src="'/header'"></ng-include>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <!--
+        <html lang="en" ng-app="foo">
+    -->
+    <script type="text/javascript">
+        var app = angular.module("foo", []);
+    </script>
+
+    <style type="text/css">
+        .fieldset-auto-width {
+            display: inline-block;
+        }
+        
+        h1 {
+            font-size: 56px;
+        }
+        
+        form {
+            font-size: 20px;
+        }
+        
+        input {
+            font-size: 40px;
+            background-color: rgb(50, 50, 50);
+            color: white;
+        }
+        
+        select {
+            font-size: 28px;
+            background-color: rgb(50, 50, 50);
+            color: white;
+        }
+        
+        input[type=radio] {
+            border: 0px;
+            width: 20px;
+            height: 20px;
+        }
+        
+        body {
+            background-color: #151515 !important;
+        }
+        
+        .button {
+            padding: 10px;
+            font-size: 25px;
+        }
+    </style>
+    <button class="rgrey button shadow" onclick="location.href='/class/form'">Go to original</button><br>
+
+    <h1 style="color:rgb(220,220,220);">Covid test eligiblity</h1>
+    <form name="Covid test eligibilty" action=class.php method=post>
+
+        <fieldset style="background-color: rgb(70,70, 70); height: 714px;" class="fieldset-auto-width">
+            <legend style="color:white">Personal Details</legend>
+
+            <label for="firstname" style="color:white">First Name:</label><br>
+            <input type="text" name="firstname" value="Steve"><br>
+
+            <label for="lastname" style="color:white">Last Name:</label><br>
+            <input type="text" name="lastname" value="Jobs" bgcolor=#252525><br>
+
+
+            <label for="age" style="color:white">Age:</label>
+            <!--
+            <input type="text" name="Age" value="14"><br>
+            -->
+            <select name="age" id="age">
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+            </select><br>
+
+            <label style="color:white">Gender</label><br>
+
+            <label for="male" style="color:rgb(0, 200, 255)">
+                <input type="radio" name=gender value="male">Male/Boy
+            </label><br>
+
+            <label for="female" style="color:rgb(242, 0, 210)">
+                <input type="radio" name=gender value="female">Female/Girl
+            </label><br>
+
+            <label for="other" style="color:rgb(170, 170, 170)">
+                <input type=radio name=gender value=other>Other
+            </label> <br>
+        </fieldset>
+        <fieldset style="background-color:green" class="fieldset-auto-width">
+            <legend style="color: white;">Symptoms:</legend>
+            <label style="color: white;">Check all your symptoms</label><br>
+
+            <label for="fever" style="color: white;">
+                    <input type="checkbox" name="symptoms" value="fever">Fever
+                </label><br>
+
+            <label for="difficultybreathing" style="color: white;">
+                    <input type="checkbox" name="symptoms" value="difficultybreathing">Difficulty breathing
+                </label><br>
+
+            <label for="lowoxygenlevel" style="color: white;">
+                    <input type="checkbox" name="symptoms" value="lowoxygenlevel">Low oxygen level
+                </label><br>
+
+            <label for="coughing" style="color: white;">
+                    <input type="checkbox" name="symptoms" value="coughing">Coughing
+                </label><br><br>
+
+            <fieldset style="background-color:red;" class="fieldset-auto-width">
+                <legend>Address Details</legend>
+                <label>Choose your country<label><br>
+                    <select id="country " name="country">
+                        <option value="india">India</option>
+                        <option value="china">China</option>
+                        <option value="europe">Europe</option>
+                        <option value="america">America</option>
+                        <option value="uae">UAE</option>
+                    </select><br>
+                <textarea name="address detail " rows="10" cols="30" placeholder="Address"></textarea>
+            </fieldset><br>
+            <fieldset style="background-color:gray;">
+                <legend>Preconditions</legend>
+                <textarea name="preconditions " rows="10" cols="30" placeholder="Pre Conditions"></textarea><br>
+                <input class="black shadow button" type=submit>
+            </fieldset>
+        </fieldset>
+    </form>
+
+</body>
+
+</html>
