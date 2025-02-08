@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ng-app="foo">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -44,18 +44,10 @@
 				document.cookie=name + "=" + escape(value);
 				return 1;
 			}
-<<<<<<< HEAD
 			if (decodeURIComponent(getCookie("username") === null)) {
         		document.getElementById("username").value = decodeURIComponent(getCookie("username"));
 				console.log(getCookie("username"))
     		}
-=======
-			if(decodeURIComponent(getCookie("username") === null){
-        
-        document.getElementById("username").value = decodeURIComponent(getCookie("username"));
-			console.log(getCookie("username"))
-      }
->>>>>>> c96ca7d83f9494abc768572ba8e2f4c5e9345135
 		</script>
 	</body>
 </html>

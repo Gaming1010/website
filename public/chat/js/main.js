@@ -4,11 +4,7 @@ const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
 const commands = ['!req']
 const chatMessages = document.querySelector('.chat-messages');
-<<<<<<< HEAD
 const colorCache = {}; // Store computed colors
-=======
-
->>>>>>> c96ca7d83f9494abc768572ba8e2f4c5e9345135
 
 const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true
@@ -55,7 +51,6 @@ function outputMessage(message) {
   const div = document.createElement('div');
   div.classList.add('message');
   div.innerHTML = `
-<<<<<<< HEAD
       <p class="meta" style="color: ${hashColor(message.username)}">
           ${message.username} <span style="float: right">${message.time}</span>
       </p>
@@ -63,14 +58,6 @@ function outputMessage(message) {
   
   document.querySelector('.chat-messages').appendChild(div);
 }
-=======
-    <p class="meta">${message.username} |
-    <span></span>${message.time}</p>
-    <p class="text">${message.text}</p>`;
-  document.querySelector('.chat-messages').appendChild(div)
-}
-
->>>>>>> c96ca7d83f9494abc768572ba8e2f4c5e9345135
 // add room to DOM
 function outputRoomName(room) {
   roomName.innerText = room + " Chat-room";
@@ -83,7 +70,6 @@ function outputUsers(users) {
     ${users.map(user => `<li>${user.username}</li>`).join('')}`;
 }
 
-<<<<<<< HEAD
 function hashColor(username) {
   if (colorCache[username]) return colorCache[username];
 
@@ -100,8 +86,6 @@ function hashColor(username) {
   colorCache[username] = color;
   return color;
 }
-=======
->>>>>>> c96ca7d83f9494abc768572ba8e2f4c5e9345135
 
 //on error, do something
 socket.on('error', error => {
@@ -111,10 +95,7 @@ socket.on('error', error => {
 });
 
 socket.on('who_all_online', () => {
-<<<<<<< HEAD
   
-=======
->>>>>>> c96ca7d83f9494abc768572ba8e2f4c5e9345135
   joinroom()
 })
 

@@ -1,17 +1,15 @@
 //TODO:
-//<> DOWNLOAD THE FILE FOR THE HEADER THINGY
-//IT DOESNT WORK IF THERES NO INTERNET T.T
+//ion have internet, why doesnt chat work??
+//<> DOWNLOAD THE FILE FOR THE HEADER THINGY IT DOESNT WORK IF THERES NO INTERNET T.T (its like sum angular)
 //<> publish
-//<> make the video uploader thingy 
-//cant be too hard
+//<> make the video uploader thingy. cant be too hard
 //<> music page or like add a thing for mp3 files INTO the media page
 //<> offline users thingamajing in the chat page
-//<> add like specifc ratios where the media page
-//allows the webpage to put more width
-//<difficult> all the videos with 9-16 ratio instead of 16-9
-//to be stacked together cus it looks weird rn
+//<> add like specifc ratios where the media page allows the webpage to put more width
+//<> add views to media page
+//<difficult> all the short videos to be stacked together in like one row/coloumn cus it looks weird rn
 //<time consuming> make a page to search for videos/music on yt then select it to download to the website and then play it
-//same thing with videos
+//same thing with videos <--- ???
 //<sorta important> limit the storage usage by the website
 const port = 80;
 const express = require('express');
@@ -264,6 +262,7 @@ app.get("/media_player",(req,res) => {
         res.write(`<link rel="stylesheet" href="/styles.scripts/player.css">`)
         res.write(`</head><body>`)
         res.write(`<div id="main_vid_bg"><video id="main_vid" src='/media/`+v+`' autoplay controls preload=auto onloadstart='this.volume=0.224' poster=""></video><h1 id="main_vid_title">`+v.substr(0, v.lastIndexOf('.'))+`</h1></div>`)
+        res.write('</body></html>')
       }
     }else{
       res.redirect("/media")
